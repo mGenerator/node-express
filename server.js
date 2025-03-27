@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const campsiteRouter = require('./routes/campsiteRouter');
+const promotionRouter = require('./routes/promotionRouter');
 
 const hostname = "localhost";
 const port = 3000;
@@ -9,9 +10,10 @@ const app = express();
 app.use(morgan("dev")); //middleware that i think handles logging the request headers
 app.use(express.json()); //middleware json parser
 
-app.use('/campsites', campsiteRouter)
+app.use('/campsites', campsiteRouter);
+app.use('/promotions', promotionRouter);//tells the server to use this as entry point
 
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/public")); //setting point for serving static files
 
 app.use((req, res) => {
   res.statusCode = 200;
