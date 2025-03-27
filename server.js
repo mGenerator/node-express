@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const campsiteRouter = require('./routes/campsiteRouter');
 const promotionRouter = require('./routes/promotionRouter');
+const partnerRouter = require('./routes/partnerRouter');
 
 const hostname = "localhost";
 const port = 3000;
@@ -12,6 +13,7 @@ app.use(express.json()); //middleware json parser
 
 app.use('/campsites', campsiteRouter);
 app.use('/promotions', promotionRouter);//tells the server to use this as entry point
+app.use('/partners', partnerRouter);
 
 app.use(express.static(__dirname + "/public")); //setting point for serving static files
 
